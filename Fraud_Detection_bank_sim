@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Mar 15 14:57:46 2019
+
+@author: pluto
+"""
+
+import pandas as pd
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
+
+import xgboost as xgb
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+
+# %% read
+data = pd.read_csv("Data/synthetic-data-from-a-financial-payment-system/bs140513_032310.csv")
+
+data.head(5)
+
+
+print("Number of normal examples: ",data.loc[data['fraud']==0,'fraud'].count())
+print("Number of fradulent examples: ",data.loc[data['fraud']==1,'fraud'].count())
+#print(data.fraud.value_counts()) # does the same thing above
+
+
+print("Columns: ", data.columns)
+
+print(data.zipcodeOri.nunique())
+print(data.zipMerchant.nunique())
+#dropping zipcodeori and zipMerchant since they have only one unique value
+
+
+data_reduced = data.drop(['zipcodeOri','zipMerchant'],axis=1)
+data_reduced.columns
+
+col_categorical = data_reduced.select_dtypes(include= ['object']).columns
+for col_name in col_categorical:
+    data_reduced[col_name] = data_reduced[col_name].astype('category')
+
+#data_reduced.loc[:,['customer','merchant','category']].astype('category')
+#data_dum = pd.get_dummies(data_reduced.loc[:,['customer','merchant','category','gender']],drop_first=True) # dummies
+#print(data_dum.info())
+
+data_reduced[col_categorical] = data_reduced[col_categorical].apply(lambda x: x.cat.codes)
+
+
+#num_features = data_reduced.loc[:,['step','age','amount']]
+
+X = data_reduced.drop(['fraud'],axis=1)
+
+#X = pd.concat([num_features, data_dum], axis = 1)
+
+
+# processing age which needs to be numeric but it isn't
+#mapping = {"'1'":1,"'2'":2,"'3'":3,"'4'":4,"'5'":5,"'6'":6,"'0'":0,"'U'":7}
+#X.age.replace(mapping,inplace=True)
+#print(X.info())
+
+y = data['fraud']
+
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_state=42,shuffle=True)
+
+
+# %% train
+XGBoost_CLF = xgb.XGBClassifier(max_depth=6, learning_rate=0.05, n_estimators=400, 
+                                objective="binary:hinge", booster='gbtree', 
+                                n_jobs=-1, nthread=None, gamma=0, min_child_weight=1, max_delta_step=0, 
+                                subsample=1, colsample_bytree=1, colsample_bylevel=1, reg_alpha=0, reg_lambda=1, 
+                                scale_pos_weight=1, base_score=0.5, random_state=42, verbosity=True)
+
+XGBoost_CLF.fit(X_train,y_train) # training takes too much...
+
+y_pred = XGBoost_CLF.predict(X_test)
+
+print("Accuracy for XGBoost: ", accuracy_score(y_test, y_pred)) # Accuracy for XGBoost:  0.9963059088641371
+print(confusion_matrix(y_test,y_pred))
+
+# %% knn
+knn = KNeighborsClassifier(n_neighbors=4)
+
+knn.fit(X_train,y_train)
+y_pred = knn.predict(X_test)
+
+print("Accuracy for KNN: ", accuracy_score(y_test, y_pred)) # Accuracy for KNN:  0.9938842891817504
+print(confusion_matrix(y_test,y_pred))
+
+# %% RandomForestClassifier
+
+rf_clf = RandomForestClassifier()
+
+rf_clf.fit(X_train,y_train)
+y_pred = rf_clf.predict(X_test)
+
+print("Accuracy for RandomForestClassifier: ", accuracy_score(y_test, y_pred)) # Accuracy 0.9957957991625231
+print(confusion_matrix(y_test,y_pred))
+

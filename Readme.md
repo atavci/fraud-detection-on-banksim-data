@@ -39,7 +39,7 @@ Classification Report for Random Forest Classifier :
 
 class | precision | recall | f1-score | support|
 | ---- | --------- | ------ | -------- | -------|        
-|  0   |   1.00    |   1.00 |  1.00    | 176233 |
+|  0   |   1.00    |   0.96 |  0.98    | 176233 |
 |  1   |   0.24    |   0.98 |  0.82    |  2160  |
            
          
@@ -51,12 +51,12 @@ class | precision | recall | f1-score | support|
 
 Classification Report for Ensembled Models(RandomForest+KNN+XGBoost) : 
 
+class | precision | recall | f1-score | support|
+| ---- | --------- | ------ | -------- | -------|        
+|  0   |   1.00    |   1.00 |  1.00    | 176233 |
+|  1   |   0.73    |   0.81 |  0.77    |  2160  |
+           
 
-
-           0       1.00      1.00      1.00    176233
-           1       0.73      0.81      0.77      2160
-
-           FFFFF
 CFonfusion Matrix of Ensembled Models: 
 <br/> [175604    629]
 <br/> [   417   1743]

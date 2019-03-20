@@ -7,7 +7,7 @@ This repository uses the latter approach for classification of fraudulent transa
 
 For those who do not wish to run the script to acquire the results, here is a quick recap of the classification results of the machine learning models used in the script:
 
-Classification Report for K-Nearest Neighbours (1:fraudulent,0:non-fraudulent) :
+<br/>Classification Report for K-Nearest Neighbours (1:fraudulent,0:non-fraudulent) :
 
 |class | precision | recall | f1-score | support|
 | ---- | --------- | ------ | -------- | -------|        
@@ -20,7 +20,7 @@ Confusion Matrix of K-Nearest Neigbours:
 
 
 
-Classification Report for XGBoost : 
+<br/>Classification Report for XGBoost : 
 
 class | precision | recall | f1-score | support|
 | ---- | --------- | ------ | -------- | -------|        
@@ -35,7 +35,7 @@ Confusion Matrix of XGBoost:
 
 
 
-Classification Report for Random Forest Classifier : 
+<br/>Classification Report for Random Forest Classifier : 
 
 class | precision | recall | f1-score | support|
 | ---- | --------- | ------ | -------- | -------|        
@@ -49,7 +49,7 @@ class | precision | recall | f1-score | support|
 
 
 
-Classification Report for Ensembled Models(RandomForest+KNN+XGBoost) : 
+<br/>Classification Report for Ensembled Models(RandomForest+KNN+XGBoost) : 
 
 class | precision | recall | f1-score | support|
 | ---- | --------- | ------ | -------- | -------|        
@@ -57,7 +57,7 @@ class | precision | recall | f1-score | support|
 |  1   |   0.73    |   0.81 |  0.77    |  2160  |
            
 
-CFonfusion Matrix of Ensembled Models: 
+Confusion Matrix of Ensembled Models: 
 <br/> [175604    629]
 <br/> [   417   1743]
 

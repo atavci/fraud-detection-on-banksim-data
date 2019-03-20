@@ -21,6 +21,7 @@ Confusion Matrix of K-Nearest Neigbours:
 
 
 Classification Report for XGBoost : 
+
 |class | precision | recall | f1-score | support|
 | ---- | --------- | ------ | -------- | -------|        
 |  0   |   1.00    |   1.00 |  1.00    | 176233 |

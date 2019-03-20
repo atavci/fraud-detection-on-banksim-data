@@ -19,15 +19,18 @@ Confusion Matrix of K-Nearest Neigbours:
 <br/> [   845   1315] 
 
 
-Classification Report for XGBoost : 
-<br/>              precision    recall  f1-score   support
 
-           0       1.00      1.00      1.00    176233
-           1       0.89      0.76      0.82      2160
+Classification Report for XGBoost : 
+|class | precision | recall | f1-score | support|
+| ---- | --------- | ------ | -------- | -------|        
+|  0   |   1.00    |   1.00 |  1.00    | 176233 |
+|  1   |   0.89    |   0.76 |  0.82    |  2160  |
            
 Confusion Matrix of XGBoost: 
 <br/> [176029    204] 
 <br/> [   529   1631] 
+
+
 
 
 Classification Report for Random Forest Classifier : 
@@ -39,6 +42,7 @@ Classification Report for Random Forest Classifier :
  Confusion Matrix of Random Forest Classifier: 
 <br/> [169552   6681]
 <br/> [    39   2121]
+
 
 
 Classification Report for Ensembled Models(RandomForest+KNN+XGBoost) : 

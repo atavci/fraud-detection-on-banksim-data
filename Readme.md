@@ -8,7 +8,7 @@ This repository uses the latter approach for classification of fraudulent transa
 For those who do not wish to run the script to acquire the results, here is a quick recap of the classification results of the machine learning models used in the script:
 
 Classification Report for K-Nearest Neighbours (1:fraudulent,0:non-fraudulent) :
-<br/>             `precision    recall  f1-score   support`
+<br/>`     class   precision    recall  f1-score   support`
 
            0       1.00      1.00      1.00    176233
            1       0.83      0.61      0.70      2160

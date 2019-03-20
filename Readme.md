@@ -14,8 +14,8 @@ Classification Report for K-Nearest Neighbours (1:fraudulent,0:non-fraudulent) :
            1       0.83      0.61      0.70      2160
            
 Confusion Matrix of K-Nearest Neigbours:
-[[175962    271]
-[   845   1315]]
+<br [175962    271]/>
+<br [   845   1315]/> 
 
 
 Classification Report for XGBoost : 
@@ -25,8 +25,8 @@ Classification Report for XGBoost :
            1       0.89      0.76      0.82      2160
            
 Confusion Matrix of XGBoost: 
-[[176029    204]
-[   529   1631]]
+<br [176029    204] />
+<br [   529   1631] />
 
 
 Classification Report for Random Forest Classifier : 

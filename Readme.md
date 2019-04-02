@@ -7,6 +7,8 @@ This repository uses the latter approach for classification of fraudulent transa
 
 For those who do not wish to run the script to acquire the results, here is a quick recap of the classification results of the machine learning models used in the script:
 
+!Update Note: These results are without the oversampling technique SMOTE. I have also added a jupyter notebook with more insights and used the SMOTE for balancing the dataset. Overall results looks more better just check the file called Fraud Detection on Bank Payments.ipynb from inside the repo.
+
 <br/>Classification Report for K-Nearest Neighbours (1:fraudulent,0:non-fraudulent) :
 
 |class | precision | recall | f1-score | support|
